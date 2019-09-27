@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+service GrpcTODO {
+    rpc GetTodoCommand (CommandRequest) returns (CommandResponse){}
+    rpc InputMode(MessageRequest) returns(MessageResponse){}
+    rpc SelectMode(MessageRequest) returns(MessageResponse){}
+    rpc SelectModeDecision(DecisionRequest) returns(MessageResponse){}
+}
+
+message DecisionRequest{
+    string cmd = 1;
+    string mes = 2;
+}
+
+message MessageRequest{
+    string mes = 1;
+}
+
+message MessageResponse{
+    string res = 1;
+}
+
+
+message CommandRequest{
+    string cmd = 1;
+
+}
+
+message CommandResponse{
+    string res = 1;
+    bool select_mode = 2;
+    bool input_mode = 3;
+}
